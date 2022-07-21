@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/cdl_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/abl_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_nav"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:menu="@menu/menu_toolbar">
+
+            <ImageView
+                android:id="@+id/iv_youtube"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_40sdp"
+
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_youtube"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_anchorGravity="bottom">
+
+
+<!--            <FrameLayout-->
+<!--                android:id="@+id/fl_content"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_marginBottom="@dimen/_40sdp">-->
+
+<!--&lt;!&ndash;                <androidx.viewpager2.widget.ViewPager2&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/vp2_main"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:visibility="visible" />&ndash;&gt;-->
+
+<!--            </FrameLayout>-->
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/youtube_nav_graph"/>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="bottom"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/custom_color_bottom_nav"
+        app:itemTextColor="@color/custom_color_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom"/>
+
+    <include layout="@layout/activity_video_play"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
